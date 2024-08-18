@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'title' %} Home {% endblock %}
+
+{% block 'css' %}
+
+    <style>
+
+        body {
+            {% comment %} background-image: url('./static/img/home/livro-2.png'); {% endcomment %}
+            background-color: #2980B9;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .h3_text {
+            color: white;
+            font-size: 50px;
+        }
+
+        .p_text {
+            color: white;
+            font-size: 15px;
+        }
+
+        .div-text{
+            margin-top:12em;
+        }
+        .img-dash {
+            margin-left: 50em;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block 'header' %}
+
+    {% include 'partials/nav-bar.html' %}
+
+{% endblock %}
+
+{% block 'content' %}
+    <div class="container mt-5">
+        <div class="row justify-content-start">
+            <div class="col-md-6 d-flex div-text"> 
+                <div class="m">
+                    <h3 class="h3_text">Gerenciamento Financeiro Simplificado</h3>
+                    <p class="p_text">
+                        Descubra uma nova maneira de tomar controle total de suas finanças com o MyFinance. 
+                        Seja você um indivíduo, uma família ou um empreendedor, nosso sistema financeiro 
+                        intuitivo e poderoso está aqui para simplificar sua vida financeira.
+                    </p>
+
+                    <a class="btn btn-outline-light mr-2" href={% url "admin:index" %} target="_blank">Login</a>
+                    <a class="btn btn-outline-light mr-5" href={% url "register" %} target="_blank"> Cadastre-se</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
