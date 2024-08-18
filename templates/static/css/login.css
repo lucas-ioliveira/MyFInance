@@ -1,0 +1,5 @@
+/* Ajusta o tamanho da imagem na tela de login */
+.login-logo img {
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+}
