@@ -1,6 +1,7 @@
 from django.contrib import admin
 from carteira.models import Category, AccountsReceivable, AccountsPayable
-
+from import_export import resources
+from import_export.admin import ImportExportActionModelAdmin
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -9,11 +10,17 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('title', 'is_active')
 
 
+class AccountsReceivableResources(resources.ModelResource):
+    class Meta:
+        model = AccountsReceivable
+
+
 @admin.register(AccountsReceivable)
-class AccountsReceivableAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'amount_received', 'due_date', 'category', 'status')
+class AccountsReceivableAdmin(ImportExportActionModelAdmin):
+    resource_classes = [AccountsReceivableResources]
+    list_display = ('title', 'description', 'amount_received', 'date_receipt')
     list_display_links = ('title',)
-    search_fields = ('title', 'status')
+    search_fields = list_display_links
     exclude = ('owner', 'is_active')
 
     def get_queryset(self, request):
@@ -28,8 +35,13 @@ class AccountsReceivableAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
 
+class AccountsPayableResources(resources.ModelResource):
+    class Meta:
+        model = AccountsPayable
+
 @admin.register(AccountsPayable)
-class AccountsPayableAdmin(admin.ModelAdmin):
+class AccountsPayableAdmin(ImportExportActionModelAdmin):
+    resource_classes = [AccountsPayableResources]
     list_display = ('title', 'description', 'amount_paid', 'due_date', 'category', 'status')
     list_display_links = ('title',)
     search_fields = ('title', 'status')
