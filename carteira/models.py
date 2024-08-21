@@ -38,18 +38,15 @@ class AccountsReceivable(Base):
     title = models.CharField(verbose_name='Título', max_length=200)
     description = models.CharField(verbose_name='Descrição', max_length=200)
     amount_received = models.FloatField(verbose_name='Valor recebido')
-    due_date = models.DateField(verbose_name='Data de vencimento', blank=True, null=True)
-    category = models.ForeignKey(Category, verbose_name='Categoria', on_delete=models.CASCADE)
-    status = models.CharField(verbose_name='Status', max_length=2,  choices=StatusChoices.choices,
-                              default=StatusChoices.PENDING,)
-
+    date_receipt = models.DateField(verbose_name='Data do recebimento', blank=True, null=True)
+  
     class Meta:
         verbose_name = 'Conta a Receber'
         verbose_name_plural = 'Contas a Receber'
         ordering = ['-id']
         indexes = [
             models.Index(fields=['created_at']),
-            models.Index(fields=['due_date']),
+            models.Index(fields=['date_receipt']),
         ]
     
     def __str__(self):
