@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     # My apps
     'home.apps.HomeConfig',
+    'carteira',
 ]
 
 MIDDLEWARE = [
@@ -140,4 +141,11 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Bem-vindo(a) ao MyFinance",
     "copyright": "MyFinance",
     "custom_css": "css/login.css",
+    "icons": {
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "carteira.Category": "fas fa-list",
+        "carteira.AccountsReceivable": "fas fa-money-bill",
+        "carteira.AccountsPayable": "fas fa-money-bill-wave"
+    },
 }
