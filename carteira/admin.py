@@ -20,6 +20,7 @@ class AccountsReceivableAdmin(ImportExportActionModelAdmin):
     resource_classes = [AccountsReceivableResources]
     list_display = ('title', 'description', 'amount_received', 'date_receipt')
     list_display_links = ('title',)
+    list_filter = ('date_receipt',)
     search_fields = list_display_links
     exclude = ('owner', 'is_active')
 
@@ -44,6 +45,7 @@ class AccountsPayableAdmin(ImportExportActionModelAdmin):
     resource_classes = [AccountsPayableResources]
     list_display = ('title', 'description', 'amount_paid', 'due_date', 'category', 'status')
     list_display_links = ('title',)
+    list_filter = ('due_date',)
     search_fields = ('title', 'status')
     exclude = ('owner', 'is_active')
 
