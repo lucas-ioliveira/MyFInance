@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Libs
     'bootstrap4',
+    'import_export',
     # My apps
     'home.apps.HomeConfig',
     'carteira',
