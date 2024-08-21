@@ -14,7 +14,7 @@ class AccountsReceivableAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'amount_received', 'due_date', 'category', 'status')
     list_display_links = ('title',)
     search_fields = ('title', 'status')
-    exclude = ('owner',)
+    exclude = ('owner', 'is_active')
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
@@ -33,7 +33,7 @@ class AccountsPayableAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'amount_paid', 'due_date', 'category', 'status')
     list_display_links = ('title',)
     search_fields = ('title', 'status')
-    exclude = ('owner',)
+    exclude = ('owner', 'is_active')
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
